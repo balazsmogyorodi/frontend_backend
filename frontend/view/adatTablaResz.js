@@ -46,22 +46,11 @@ class AdatTablaResz{
         for (const key in this.#adatok) {
             switch (key) {
                 case "nev":
-                    console.log("nev")
-                    let vnev = "";
-                    let knev = "";
+                    console.log("nev") 
                     let nev = this.#adatok[key];
                     let index = 0;
                     console.log(nev.length)
-                    while(index < nev.length && nev[index] != " "){
-                        vnev += nev[index];
-                        index++
-                    }
-                    txt += `<td>${vnev}</td>`;
-                    while(index < nev.length){
-                        knev += nev[index];
-                        index++
-                    }
-                    txt += `<td>${knev}</td>`;
+                    txt += `<td>${nev}</td>`;
                     break;
                 case "szul_datum":
                     txt += `<td>${this.#adatok[key]}</td>`;

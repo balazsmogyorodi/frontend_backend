@@ -1,6 +1,9 @@
 import DataController from "./controller/controller.js"
+import HozzaAdo_controller from "./controller/hozzaAdo_controller.js";
 
 $(function(){
-    console.log("hello")
     new DataController();
+    new HozzaAdo_controller();
 })
+
+

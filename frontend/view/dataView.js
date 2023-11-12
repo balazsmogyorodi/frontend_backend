@@ -12,6 +12,7 @@ class DataView{
         this.#cimkek = cimkek;
         this.#cimkek.push("Modósítás", "Törlés");
         szuloElem.append("<table>");
+        $("table").addClass("table")
         this.#tableElem = szuloElem.children("table");
         this.#tableElem.append("<thead><tr></tr></thead>");
         this.#tableCimkek(this.#tableElem);
