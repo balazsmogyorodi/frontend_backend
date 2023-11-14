@@ -3,9 +3,9 @@ class AdatTablaResz{
     #id;
     #trElem;
     #urlapAdat
-    constructor(id, adatok, szuloElem, urlapAdat){
+    constructor(adatok, szuloElem, urlapAdat){
         this.#urlapAdat = urlapAdat;
-        this.#id = id;
+        this.#id = adatok.nev_id;
         this.#adatok = adatok
         szuloElem.append("<tr>");
         console.log(szuloElem);
@@ -65,7 +65,7 @@ class AdatTablaResz{
         return txt;
     }
     #torlestrigger(){
-        window.dispatchEvent(new CustomEvent("torles", {detail:this}));
+        window.dispatchEvent(new CustomEvent("torles", {detail:this.#id}));
     }
 
     #modositTrigger(){

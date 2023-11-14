@@ -18,10 +18,13 @@ class DataController {
       this.megjelenit,
       this.megjelenitHiba
     );
-
-    
-
-
+    $(window).on("torles", (event) => {
+      console.log(event.detail);
+      this.dataService.deleteData("http://localhost:8000/api/writers", event.detail + 1);
+      $(".lista").empty();
+      
+      
+    });
   }
 
   megjelenit(lista) {

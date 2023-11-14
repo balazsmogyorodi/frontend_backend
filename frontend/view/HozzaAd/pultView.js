@@ -6,6 +6,7 @@ class PultView {
     #adatok;
     #szuloElem;
     #adatJelolo = [];
+    #adatHalmaz = [];
     constructor(adatok, szuloElem) {
         this.#adatok = adatok
         this.#szuloElem = szuloElem;
@@ -40,16 +41,22 @@ class PultView {
     }
 
     #esemenyTrigger() {
-        window.dispatchEvent(new CustomEvent("elem_add", { detail: this }));
+        this.#setElemek()
+        window.dispatchEvent(new CustomEvent("elem_add", { detail: this.#adatHalmaz }));
     }
 
 
 
-    getNev() {
+    #getNev() {
         return this.#adatJelolo[0].getValue();
     }
-    getDatum() {
+    #getDatum() {
         return this.#adatJelolo[1].getValue();
+    }
+
+    #setElemek(){
+        this.#adatHalmaz = { nev: `${this.#getNev()}`, szul_datum : `${this.#getDatum()}`}
+
     }
 
 }

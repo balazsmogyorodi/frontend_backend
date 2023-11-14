@@ -26,7 +26,7 @@ class DataView{
     #init(){
         this.#tableElem.append("<tbody>");
         for (let index = 0; index < this.#lista.length; index++) {
-            new AdatTablaResz(index, this.#lista[index], this.#tableElem.children("tbody"), this.#urlapAdat);
+            new AdatTablaResz(this.#lista[index], this.#tableElem.children("tbody"), this.#urlapAdat);
         }
 
     }

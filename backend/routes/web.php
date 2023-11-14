@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/api/writers', [WriterController::class,'index']);
-Route::post('/api/writers', [WriterController::class,'store']);
 
 
 
