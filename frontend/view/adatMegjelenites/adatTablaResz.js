@@ -12,7 +12,9 @@ class AdatTablaResz{
         this.#trElem = szuloElem.children("tr:last-child");
         this.#trElem.attr('id', `${this.#id}`);
         this.#trElem.append(this.#kiiras())
+        console.log(this.#id);
         $(`.torles`).on("click",()=>{
+            this.#trElem.remove();
             this.#torlestrigger();
         })
         $(`.modosit${this.#id}`).on("click",()=>{

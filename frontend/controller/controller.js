@@ -1,8 +1,9 @@
 
 import HibaView from "../view/hibaView.js";
-import DataView from "../view/dataView.js";
+import DataView from "../view/adatMegjelenites/dataView.js";
 import UrlapLeiro from "../model/urlapLeiro.js";
 import DataService from "../model/dataService.js";
+import Pultview from "../view/HozzaAd/pultView.js";
 
 
 
@@ -13,6 +14,7 @@ class DataController {
   #urlapAdat;
   constructor() {
     this.dataService = new DataService();
+    this.#hozzad();
     this.dataService.getData(
       "http://localhost:8000/api/writers",
       this.megjelenit,
@@ -20,10 +22,8 @@ class DataController {
     );
     $(window).on("torles", (event) => {
       console.log(event.detail);
-      this.dataService.deleteData("http://localhost:8000/api/writers", event.detail + 1);
-      $(".lista").empty();
-      
-      
+      this.dataService.deleteData("http://localhost:8000/api/writers", event.detail);
+   
     });
   }
 
@@ -47,6 +47,18 @@ class DataController {
   megjelenitHiba(error) {
     console.log(error);
     new HibaView(error, $(".lista"));
+  }
+
+
+  #hozzad(){
+    this.dataService = new DataService();
+    const urlapAdat = new UrlapLeiro();
+    new Pultview(urlapAdat.getAdatLeiras(), $(".adat_hozzaAd"))
+    $(window).on("elem_add", (event)=>{
+        this.dataService.postData( "http://localhost:8000/api/writers", event.detail);
+    })
+
+
   }
 }
 export default DataController;
