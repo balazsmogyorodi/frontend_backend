@@ -5,19 +5,21 @@ class AdatTablaResz{
     #urlapAdat
     constructor(adatok, szuloElem, urlapAdat){
         this.#urlapAdat = urlapAdat;
+        console.log(urlapAdat)
         this.#id = adatok.nev_id;
         this.#adatok = adatok
-        szuloElem.append("<tr>");
+        
         console.log(szuloElem);
-        this.#trElem = szuloElem.children("tr:last-child");
+        this.#trElem = szuloElem
         this.#trElem.attr('id', `${this.#id}`);
         this.#trElem.append(this.#kiiras())
         console.log(this.#id);
-        $(`.torles`).on("click",()=>{
+        $(`.torles${this.#id}`).on("click",()=>{
             this.#trElem.remove();
             this.#torlestrigger();
         })
         $(`.modosit${this.#id}`).on("click",()=>{
+            this.#trElem.empty();
             this.#modositTrigger();
         })
 
@@ -63,7 +65,7 @@ class AdatTablaResz{
             console.log(key)
             
         }
-        txt += `<td><button class="modosit${this.#id}" ">áttírás</button></td><td><button class="torles">törlés</button></td>`
+        txt += `<td><button class="modosit${this.#id}" ">áttírás</button></td><td><button class="torles${this.#id}">törlés</button></td>`
         return txt;
     }
     #torlestrigger(){

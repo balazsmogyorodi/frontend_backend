@@ -34,7 +34,7 @@ class WriterController extends Controller
         $writer->nev = $request->nev;
         $writer->szul_datum = $request->szul_datum;
         $writer->save();
-        return redirect('/api/writers');
+        //return redirect('/api/writers');
     }
 
 

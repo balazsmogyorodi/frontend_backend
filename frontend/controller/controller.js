@@ -1,9 +1,11 @@
 
 import HibaView from "../view/hibaView.js";
-import DataView from "../view/adatMegjelenites/dataView.js";
+import DataView from "../view/dataView.js";
 import UrlapLeiro from "../model/urlapLeiro.js";
 import DataService from "../model/dataService.js";
-import Pultview from "../view/HozzaAd/pultView.js";
+import Pultview from "../view/admin/funkciok/pultView.js";
+import AdatTablaModosit from "../view/admin/funkciok/adatTablaModosit.js";
+import AdatTablaResz from "../view/admin/funkciok/adatTablaResz.js";
 
 
 
@@ -23,8 +25,21 @@ class DataController {
     $(window).on("torles", (event) => {
       console.log(event.detail);
       this.dataService.deleteData("http://localhost:8000/api/writers", event.detail);
-   
     });
+    $(window).on("modosit", (event) => {
+      const obj = event.detail;
+      const urlapElem = obj.getUrlapElem();
+      const tableElem = obj.getTrElem();
+      console.log(tableElem);
+      console.log(urlapElem);
+      new AdatTablaModosit(obj.getAdatok(), tableElem, urlapElem);
+    });
+
+    $(window).on("megse", (event) => {
+      const obj = event.detail;
+      new AdatTablaResz(obj.getAdatok(), obj.getSzuloElem(), obj.getUrlapLeiro());
+    })
+
   }
 
   megjelenit(lista) {
@@ -50,12 +65,12 @@ class DataController {
   }
 
 
-  #hozzad(){
+  #hozzad() {
     this.dataService = new DataService();
     const urlapAdat = new UrlapLeiro();
     new Pultview(urlapAdat.getAdatLeiras(), $(".adat_hozzaAd"))
-    $(window).on("elem_add", (event)=>{
-        this.dataService.postData( "http://localhost:8000/api/writers", event.detail);
+    $(window).on("elem_add", (event) => {
+      this.dataService.postData("http://localhost:8000/api/writers", event.detail);
     })
 
 

@@ -3,7 +3,8 @@ class InputElemDate {
     #adatok;
     #inputElme;
     #value;
-    constructor(adatok, key, szuloElem) {
+    constructor(adatok, key, szuloElem, adat) {
+        this.#value = adat
         this.#adatok = adatok;
         this.#key = key;
         szuloElem.append(this.#inputElem_kiiras());
@@ -17,9 +18,9 @@ class InputElemDate {
 
 
     #inputElem_kiiras() {
+        console.log(this.#adatok)
         let txt = "";
-       txt = `<label for="${this.#key}">${this.#adatok.megjelenes}</label>
-       <input type="${this.#adatok.tipus}" class="${this.#key}"   min="${this.#adatok.pattern.min}" max="${this.#adatok.pattern.max}">`
+       txt = `<input type="${this.#adatok.tipus}" class="${this.#key}"   min="${this.#adatok.pattern.min}" max="${this.#adatok.pattern.max}" value='${this.#value}'>`
         return txt;
     }
 

@@ -1,5 +1,5 @@
-import InputElemDate from "./inputElemDate.js";
-import InputElemKiiras from "./inputElemText.js";
+import InputElemDate from "../inputElemek/inputElemDate.js";
+import InputElemKiiras from "../inputElemek/inputElemText.js";
 
 
 class PultView {
@@ -24,14 +24,17 @@ class PultView {
     #hozzaAdPult_kiiras() {
         let index = 0;
         for (const key in this.#adatok) {
+            console.log(key);
             this.#szuloElem.append("<div></div>");
+            this.#szuloElem.append(`<label for="${key}">${this.#adatok[key].megjelenes}</label>`);
             switch (this.#adatok[key].tipus) {
                 case "text":
-                    this.#adatJelolo[index] = new InputElemKiiras(this.#adatok[key], key, this.#szuloElem);
+                    console.log(this.#adatok)
+                    this.#adatJelolo[index] = new InputElemKiiras(this.#adatok[key], key, this.#szuloElem, "");
                     index = index + 1;
                     break;
                 case "date":
-                    this.#adatJelolo[index] = new InputElemDate(this.#adatok[key], key, this.#szuloElem);
+                    this.#adatJelolo[index] = new InputElemDate(this.#adatok[key], key, this.#szuloElem, "");
                     index = index + 1;
                     break;
             }

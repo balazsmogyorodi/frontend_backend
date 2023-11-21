@@ -1,4 +1,5 @@
-import AdatTablaResz from "./adatTablaResz.js"
+import AdatTablaResz from "./admin/funkciok/adatTablaResz.js"
+
 
 class DataView{
     #tableElem
@@ -25,8 +26,12 @@ class DataView{
 
     #init(){
         this.#tableElem.append("<tbody>");
+        const tbody = $("tbody");
         for (let index = 0; index < this.#lista.length; index++) {
-            new AdatTablaResz(this.#lista[index], this.#tableElem.children("tbody"), this.#urlapAdat);
+            tbody.append("<tr>");
+            const tr = tbody.children("tr:last-child");
+            new AdatTablaResz
+            (this.#lista[index], tr, this.#urlapAdat);
         }
 
     }

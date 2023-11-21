@@ -3,7 +3,8 @@ class InputElemKiiras {
     #adatok;
     #inputElme;
     #value;
-    constructor(adatok, key, szuloElem) {
+    constructor(adatok, key, szuloElem, adat) {
+        this.#value = adat;
         this.#adatok = adatok;
         this.#key = key;
         szuloElem.append(this.#inputElem_kiiras());
@@ -18,8 +19,7 @@ class InputElemKiiras {
 
     #inputElem_kiiras() {
         let txt = "";
-       txt = `<label for="${this.#key}">${this.#adatok.megjelenes}</label>
-       <input type="${this.#adatok.tipus}" class="${this.#key}" placeholder="${this.#adatok.placeholder}" pattern="${this.#adatok.pattern}">`
+       txt = `<input type="${this.#adatok.tipus}" class="${this.#key}" placeholder="${this.#adatok.placeholder}" pattern="${this.#adatok.pattern}" value="${this.#value}">`
         return txt;
     }
 
