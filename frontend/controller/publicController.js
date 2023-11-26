@@ -1,6 +1,7 @@
 import DataService from "../model/dataService.js";
 import UrlapLeiro from "../model/urlapLeiro.js";
 import HibaView from "../view/hibaView.js";
+import DataView from "../view/dataView.js";
 
 class PublicController{
 
@@ -26,6 +27,7 @@ class PublicController{
           cimkek.push(urlapadat.getAdatLeiras()[key].megjelenes);
         }
         console.log(cimkek);
+        new DataView(lista, $(".adatok"), cimkek, urlapadat, "publikus");
         
       }
     

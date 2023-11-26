@@ -8,8 +8,10 @@ class AdatTablaModosit {
     #uralpLeiroAlap;
     #value;
     #inputElem;
+    #id;
     #adatJelolo = [];
     constructor(adatok, szuloElem, urlapLeiro) {
+        this.#id = (adatok.nev_id)
         this.#uralpLeiroAlap = urlapLeiro;
         this.#adatok = adatok;
         this.#szuloElem = szuloElem;
@@ -64,6 +66,10 @@ class AdatTablaModosit {
 
     #megseTrigger(){
         window.dispatchEvent(new CustomEvent("megse", { detail: this }));
+    }
+
+    getId(){
+        return this.#id
     }
 
     #megerositTrigger(){

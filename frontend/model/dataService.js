@@ -24,13 +24,13 @@ class DataService {
     }
 
 
-    postData(url, data){
+    postData(url, data) {
         axios
             .post(url, data)
-            .then((response)=>{
+            .then((response) => {
                 console.log(response);
             })
-            .catch((error) =>{
+            .catch((error) => {
                 console.log(error);
             })
     }
@@ -45,6 +45,18 @@ class DataService {
                 console.log("hiba", error);
             })
     }
+
+    
+    putData(url,id,obj){
+        axios.put(url+'/'+id,obj)
+        .then(function(response){
+          location.reload();
+          console.log("resp",response);
+        })
+        .catch((error)=>{
+          console.log("hiba",error);
+        })
+      }
 
 
 }

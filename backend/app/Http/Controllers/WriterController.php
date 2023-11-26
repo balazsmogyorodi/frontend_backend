@@ -30,10 +30,10 @@ class WriterController extends Controller
 
     public function update(Request $request, $id)
     {
-        $writer = Writer::where('nev_id',$id);
-        $writer->nev = $request->nev;
-        $writer->szul_datum = $request->szul_datum;
-        $writer->save();
+        $user = Writer::where('nev_id',$id);
+        $user->nev = $request->nev;
+        $user->szul_datum = $request->szul_datum;
+        $user->save();
         //return redirect('/api/writers');
     }
 

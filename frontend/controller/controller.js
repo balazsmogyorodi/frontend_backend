@@ -40,21 +40,32 @@ class DataController {
       new AdatTablaResz(obj.getAdatok(), obj.getSzuloElem(), obj.getUrlapLeiro());
     })
 
+    $(window).on("megerosit", (event) =>{
+      let id = event.detail.getId();
+      console.log(event.detail.getAdatok());
+      const adatok = {nev: "Mogyi",
+                        szul_datum: "2002-12-13"}
+      
+
+      this.dataService.putData("http://localhost:8000/api/tasks", id, adatok);
+
+    })
+
   }
 
   megjelenit(lista) {
     console.log(lista);
-    const cimkek = [];
-    const urlapadat = new UrlapLeiro();
-    urlapadat.setAdatok(lista);
-    // this.#adatok = urlapadat.getAdatLeiras();
-    console.log(urlapadat.getAdatLeiras());
-    for (const key in urlapadat.getAdatLeiras()) {
-      console.log(urlapadat.getAdatLeiras()[key].megjelenes);
-      cimkek.push(urlapadat.getAdatLeiras()[key].megjelenes);
-    }
-    console.log(cimkek);
-    new DataView(lista, $(".lista"), cimkek, urlapadat);
+        const cimkek = [];
+        const urlapadat = new UrlapLeiro();
+        urlapadat.setAdatok(lista);
+        // this.#adatok = urlapadat.getAdatLeiras();
+        console.log(urlapadat.getAdatLeiras());
+        for (const key in urlapadat.getAdatLeiras()) {
+          console.log(urlapadat.getAdatLeiras()[key].megjelenes);
+          cimkek.push(urlapadat.getAdatLeiras()[key].megjelenes);
+        }
+        console.log(cimkek);
+        new DataView(lista, $(".lista"), cimkek, urlapadat, "admin");
   }
 
 
